@@ -17,3 +17,12 @@ li{
 nav {
     margin-bottom: 20px;
 }
+.badge-info {
+    color: #fff;
+    background-color: #17a2b8;
+    position: relative;
+    top: -14px;
+    left: -20px;
+    border-radius: 50%;
+
+}

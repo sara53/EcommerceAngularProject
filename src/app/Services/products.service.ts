@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 
 export class ProductsService {
 
-  baseURL = "https://localhost:44371";
+  baseURL = "http://localhost:36417";
   constructor(private myClient:HttpClient) { }
 
   getAllProducts(){
