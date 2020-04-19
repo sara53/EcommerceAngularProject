@@ -1,0 +1,10 @@
+<h2 class="text-center">Our Products</h2>
+
+<form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<div class="row row-cols-1 row-cols-md-3 allProducts">
+  <app-product *ngFor="let product of Products" [product]="product"></app-product>
+</div>
