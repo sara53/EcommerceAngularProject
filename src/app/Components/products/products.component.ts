@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ProductsService} from 'src/app/Services/products.service';
 import { CategoriesService } from 'src/app/Services/categories.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -10,17 +11,35 @@ import { CategoriesService } from 'src/app/Services/categories.service';
 export class ProductsComponent implements OnInit, OnDestroy {
 
   subscriber;
-  Products;
+  Products:any[]=[];;
   Categories;
   Cate_subscriber;
-  constructor(private myServices:ProductsService, private myCategoryServices:CategoriesService) { }
+  id;
+  FilterdProduct: any[]=[];
+  constructor (
+    private myServices:ProductsService,
+     private myCategoryServices:CategoriesService,
+     private route:ActivatedRoute
+     ){ 
+      
+      route.queryParamMap.subscribe((params)=>{
+
+        this.id = params.get('id');
+        this.FilterdProduct = (this.id)?
+        this.Products.filter(p => p.categoryID == this.id ):this.Products;
+  
+      });
+  
+
+     }
+  
   ngOnDestroy(): void {
     this.subscriber.unsubscribe();
   }
 
   ngOnInit(): void {
 
-    this.subscriber = this.myServices.getAllProducts().subscribe((products)=>{
+    this.subscriber = this.myServices.getAllProducts().subscribe((products:any[])=>{
       console.log(products);
       if(products){
         this.Products = products;

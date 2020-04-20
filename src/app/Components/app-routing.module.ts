@@ -10,10 +10,11 @@ import { CategoriesService } from '../Services/categories.service';
 
 
 const routes:Routes=[
-  {path:'', redirectTo:'home',pathMatch:'full'},
+  {path:'', redirectTo:'product',pathMatch:'full'},
   {path:'home',component:HomeComponent},
   {path:'about',component:AboutComponent},
   {path:'product',component:ProductsComponent},
+  {path:'product/:id',component:ProductsComponent},
   {path:'login',component:LoginComponent},
   {path:'**',component:ErrorComponent},
   

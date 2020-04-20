@@ -9,12 +9,15 @@
 
   <div class="col-md-4">
     <div class="list-group">
-      <span  class="list-group-item list-group-item-action active">
-        our Categories
+      <span  class="list-group-item">
+        Our Categories
       </span>
-      <a [routerLink]="cat.categoryID" class="list-group-item list-group-item-action" *ngFor="let cat of Categories">{{cat.name}}</a>
+      <a routerLink="/" [queryParams]="{id:cat.categoryID}" class="list-group-item list-group-item-action"
+       *ngFor="let cat of Categories" [class.active]="id == cat.categoryID">{{cat.name}}</a>
      </div>
   </div>
+
+    <app-product *ngFor="let product of FilterdProduct" [product]="product"></app-product>
+ 
   
-  <app-product *ngFor="let product of Products" [product]="product"></app-product>
 </div>
