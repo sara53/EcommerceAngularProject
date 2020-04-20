@@ -6,6 +6,8 @@ import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
+import { CategoriesService } from '../Services/categories.service';
+
 
 const routes:Routes=[
   {path:'', redirectTo:'home',pathMatch:'full'},
@@ -14,6 +16,7 @@ const routes:Routes=[
   {path:'product',component:ProductsComponent},
   {path:'login',component:LoginComponent},
   {path:'**',component:ErrorComponent},
+  
 
 ]
 

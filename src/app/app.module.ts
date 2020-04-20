@@ -9,8 +9,8 @@ import { AppRoutingModule } from './Components/app-routing.module';
 import { ErrorComponent } from './Components/error/error.component';
 import { ProductsService } from './Services/products.service';
 import {HttpClientModule} from '@angular/common/http';
-import { ProductComponent } from './Components/products/product/product.component'
-
+import { ProductComponent } from './Components/products/product/product.component';
+import { CategoriesService } from './Services/categories.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { ProductComponent } from './Components/products/product/product.componen
     ProductsComponent,
     LoginComponent,
     ErrorComponent,
-    ProductComponent
+    ProductComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,8 @@ import { ProductComponent } from './Components/products/product/product.componen
     HttpClientModule
   ],
   providers: [
-    ProductsService
+    ProductsService,
+    CategoriesService
   ],
   bootstrap: [AppComponent]
 })

@@ -12,11 +12,8 @@
       <span  class="list-group-item list-group-item-action active">
         our Categories
       </span>
-      <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-      <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-      <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
-    </div>
+      <a [routerLink]="cat.categoryID" class="list-group-item list-group-item-action" *ngFor="let cat of Categories">{{cat.name}}</a>
+     </div>
   </div>
   
   <app-product *ngFor="let product of Products" [product]="product"></app-product>
