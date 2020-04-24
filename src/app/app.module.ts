@@ -8,9 +8,12 @@ import { LoginComponent } from './Components/login/login.component';
 import { AppRoutingModule } from './Components/app-routing.module';
 import { ErrorComponent } from './Components/error/error.component';
 import { ProductsService } from './Services/products.service';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ProductComponent } from './Components/products/product/product.component';
 import { CategoriesService } from './Services/categories.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccountService } from './Services/account.service';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,17 @@ import { CategoriesService } from './Services/categories.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     ProductsService,
-    CategoriesService
+    CategoriesService,
+    AccountService
   ],
   bootstrap: [AppComponent]
 })
