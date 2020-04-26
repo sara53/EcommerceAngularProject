@@ -16,22 +16,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
   Cate_subscriber;
   id;
   FilterdProduct: any[]=[];
+
   constructor (
     private myServices:ProductsService,
      private myCategoryServices:CategoriesService,
      private route:ActivatedRoute
-     ){ 
-      
-      route.queryParamMap.subscribe((params)=>{
-
-        this.id = params.get('id');
-        this.FilterdProduct = (this.id)?
-        this.Products.filter(p => p.categoryID == this.id ):this.Products;
-  
-      });
-  
-
-     }
+     ){}
   
   ngOnDestroy(): void {
     this.subscriber.unsubscribe();
@@ -42,8 +32,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.subscriber = this.myServices.getAllProducts().subscribe((products:any[])=>{
       console.log(products);
       if(products){
-        this.Products = products;
+        this.FilterdProduct =  this.Products = products;
       }
+
+      this.route.queryParamMap.subscribe((params)=>{
+
+        this.id = params.get('id');
+        this.FilterdProduct = (this.id)?
+        this.Products.filter(p => p.categoryID == this.id ):this.Products;
+  
+      });
+
     },(error)=>{
       console.log(error);
     })
@@ -62,5 +61,12 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   }
 
+  filterProduct(productName:string){
+
+    console.log(productName);
+    this.FilterdProduct = (productName)?
+    this.Products.filter(p => p.title.toLowerCase().includes(productName.toLowerCase())):this.Products;
+
+  }
 
 }
