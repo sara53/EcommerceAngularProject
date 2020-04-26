@@ -14,6 +14,8 @@ import { CategoriesService } from './Services/categories.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './Services/account.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { EditProfileComponent } from './Components/profile/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     LoginComponent,
     ErrorComponent,
     ProductComponent,
+    ProfileComponent,
+    EditProfileComponent,
 
   ],
   imports: [

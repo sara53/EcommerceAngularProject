@@ -7,6 +7,8 @@ import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { CategoriesService } from '../Services/categories.service';
+import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 
 
 const routes:Routes=[
@@ -16,6 +18,9 @@ const routes:Routes=[
   {path:'product',component:ProductsComponent},
   {path:'product/:id',component:ProductsComponent},
   {path:'login',component:LoginComponent},
+  {path:'profile',component:ProfileComponent},
+  {path:'editProfile',component:EditProfileComponent},
+
   {path:'**',component:ErrorComponent},
   
 
