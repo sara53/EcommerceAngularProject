@@ -39,6 +39,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  NavToRegisteration(){
+    console.log("d")
+   this.router.navigate(['/Registration']);
+  }
+
   // login(user) {
   //   console.log(user)
   //   this.accService.login(user)

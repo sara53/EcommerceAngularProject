@@ -9,6 +9,7 @@ import { ErrorComponent } from './error/error.component';
 import { CategoriesService } from '../Services/categories.service';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import {RegistrationComponent} from './registration/registration.component'
 
 
 const routes:Routes=[
@@ -20,6 +21,7 @@ const routes:Routes=[
   {path:'login',component:LoginComponent},
   {path:'profile',component:ProfileComponent},
   {path:'editProfile',component:EditProfileComponent},
+  {path:'Registration',component:RegistrationComponent},
 
   {path:'**',component:ErrorComponent},
   

@@ -16,6 +16,7 @@ import { AccountService } from './Services/account.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { EditProfileComponent } from './Components/profile/edit-profile/edit-profile.component';
+import { RegistrationComponent } from './Components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { EditProfileComponent } from './Components/profile/edit-profile/edit-pro
     ProductComponent,
     ProfileComponent,
     EditProfileComponent,
+    RegistrationComponent,
 
   ],
   imports: [
