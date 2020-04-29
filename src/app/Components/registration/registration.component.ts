@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   DuplicateUserName = false;
-  GenderValidation = false;
+  GenderValidation = false ;
 
 
 
