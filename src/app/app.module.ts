@@ -30,6 +30,7 @@ import { RegistrationComponent } from './Components/registration/registration.co
     ProfileComponent,
     EditProfileComponent,
     RegistrationComponent,
+    
 
   ],
   imports: [
