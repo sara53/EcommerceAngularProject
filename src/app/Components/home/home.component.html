@@ -25,35 +25,14 @@
 
 <h1 class="text-center">Sales Products</h1>
 <div class="card-columns">
-    <div class="card">
-      <img src="assets/img/1.jpg" class="card-img-top" alt="...">
+    <div class="card" *ngFor="let product of products">
+      <img [src]="product.image" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title that wraps to a new line</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <h5 class="card-title" class="text-center">{{product.title}}</h5>
+        <p class="card-text"></p>
       </div>
     </div>
-    <div class="card p-3">
-      <blockquote class="blockquote mb-0 card-body">
-        <img src="assets/img/2.jpg" class="card-img-top" alt="...">
-        
-      </blockquote>
-    </div>
-    <div class="card">
-      <img src="assets/img/2.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        
-      </div>
-    </div>
-    <div class="card bg-primary text-white text-center p-3">
-        <img src="assets/img/14.jpg" class="card-img-top" alt="...">
-    </div>
-    <div class="card text-center">
-        <img src="assets/img/8.jpg" class="card-img-top" alt="...">
-    </div>
-    <div class="card">
-      <img src="assets/img/3.jpg" class="card-img-top" alt="...">
-    </div>
+
   </div>
 
   <footer>
