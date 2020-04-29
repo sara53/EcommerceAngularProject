@@ -10,10 +10,10 @@
 						<img src="assets/img/default.png" class="img-responsive">
 					</div>
 				</div>
-				<div class="general_info_content">
-					<p>Sara Atef</p>
-					<p>sara.atef001@gmail.com</p>
-					<p>0123456789</p>
+				<div class="general_info_content" *ngIf = "isDataLoaded">
+					<p>{{currentUser.userName}}</p>
+					<p>{{currentUser.email}}</p>
+					<p>{{currentUser.phoneNumber}}</p>
 					<!-- <button class="btn btn-danger" routerLink="editProfile">Edit Profile</button> -->
 					<input type="button" value="Edit Profile" (click)="GoEdit()" class="btn btn-danger">
 				</div>
