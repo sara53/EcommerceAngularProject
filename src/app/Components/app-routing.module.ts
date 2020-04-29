@@ -23,6 +23,8 @@ const routes:Routes=[
   {path:'editProfile',component:EditProfileComponent},
   {path:'Registration',component:RegistrationComponent},
 
+  
+
   {path:'**',component:ErrorComponent},
   
 
