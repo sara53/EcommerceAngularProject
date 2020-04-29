@@ -36,6 +36,7 @@ export class AccountService {
     return this.myClient.get(`${this.baseURL}/api/users/GetCurrentUserInfo`, 
     {headers:headers})
   }
+  
 
   isLoggedIn() {
     let jwtHelper = new JwtHelperService();

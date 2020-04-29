@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
   //       this.invalidLogin = true;
   //     })
   // }
+  
   show(a) {
     var x = $("#" + a)
     if (x.attr('type') == "password") {
