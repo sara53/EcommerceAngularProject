@@ -17,7 +17,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { EditProfileComponent } from './Components/profile/edit-profile/edit-profile.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
-
+import { EditProfileService } from './Services/edit-profile.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,12 +41,14 @@ import { RegistrationComponent } from './Components/registration/registration.co
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    BrowserModule
   ],
   providers: [
     ProductsService,
     CategoriesService,
-    AccountService
+    AccountService,
+    EditProfileService
   ],
   bootstrap: [AppComponent]
 })
