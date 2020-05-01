@@ -12,7 +12,7 @@ export class EditProfileService {
   constructor(private myClient:HttpClient) { }
 
   EditUser(id,user){
-    console.log("Entered");
+    console.log("Entered ");
    return this.myClient.put(`${this.baseURL}/api/Users/${id}`,user);
     
   }
