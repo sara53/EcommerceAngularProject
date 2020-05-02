@@ -29,6 +29,15 @@ export class AccountService {
     return jwtHelper.decodeToken(token).sub
 
   }
+  currentUserID() {
+    let jwtHelper = new JwtHelperService();
+    let token = localStorage.getItem('token');
+    if (!token)
+      return null;
+    //return jwtHelper.decodeToken(token).sub.charAt(0).toUpperCase() + jwtHelper.decodeToken(token).sub.slice(1)
+    return jwtHelper.decodeToken(token).kid
+
+  }
 
   isLoggedIn() {
     let jwtHelper = new JwtHelperService();

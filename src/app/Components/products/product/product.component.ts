@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { AccountService } from '../../../Services/account.service';
+import { OrderService } from '../../../Services/order.service';
+import { Subscription } from 'rxjs';
+import { AppComponent } from '../../../app.component';
 
 @Component({
   selector: 'app-product',
@@ -7,10 +11,55 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(private AccService: AccountService, private OrderService: OrderService) {
 
-  ngOnInit(): void {
   }
-@Input('product') product;
-
+  @Input('product') product;
+  Quantity;
+  GetQuantity() {
+    this.OrderService.GetCurrentOrder().subscribe(CurrOrderID => {
+      this.OrderService.GetProductQuantity(this.product.productID, CurrOrderID).
+        subscribe(result => {
+          console.log(result)
+          this.Quantity = result
+        })
+    })
+  }
+  ngOnInit(): void {
+    this.GetQuantity()
+    // this.OrderService.
+    //   GetProductQuantity(this.product.productID).subscribe(result => {
+    //     this.Quantity = result;
+    //   })
+  }
+  @Output() myEvent = new EventEmitter();
+  AddCart() {
+    this.OrderService.GetCurrentOrder().subscribe(CurrOrderID => {
+      if (CurrOrderID != 0) {
+        console.log("msh zerooooooooooo")
+        this.OrderService.AddProductsToOrder(this.product.productID, CurrOrderID).
+          subscribe(result => {
+            if (result) {
+              console.log(result)
+            }
+          })
+      }
+      else if (CurrOrderID == 0) {
+        console.log("dh zeroooo")
+        this.OrderService.AddOrder().
+          subscribe(NewOrderID => {
+            if (NewOrderID) {
+              this.OrderService.AddProductsToOrder(this.product.productID, NewOrderID["orderID"]).
+                subscribe(result => {
+                  if (result) {
+                    console.log(result)
+                  }
+                })
+            }
+          })
+      }
+      this.myEvent.emit()
+      this.ngOnInit()
+    })
+  }
 }

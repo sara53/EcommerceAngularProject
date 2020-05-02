@@ -14,6 +14,7 @@ import { CategoriesService } from './Services/categories.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './Services/account.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ShoppingCartComponent } from './Components/ShoppingCart/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     LoginComponent,
     ErrorComponent,
     ProductComponent,
+    ShoppingCartComponent,
 
   ],
   imports: [
