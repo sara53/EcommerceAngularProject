@@ -15,13 +15,7 @@ export class EditProfileComponent implements OnInit {
   subscrription;
   imageSrc: string;
 
-
-
-
   constructor(private myServices: EditProfileService, private AccServices: AccountService, private router:Router) { }
-
-
-
 
   ngOnInit(): void {
     this.subscrription = this.AccServices.GetCurrentUserInfo()
@@ -64,7 +58,7 @@ export class EditProfileComponent implements OnInit {
     console.log(this.myForm.value && this.IsConfirmedPassword)
     let body = { id: this.currentUserEdit.id, password: this.myForm.value.password, Image: this.imageSrc, Email: this.myForm.value.email };
 
-    if (this.myForm.valid) {
+    if (this.myForm.valid && this.IsConfirmedPassword) {
       this.subscrription = this.AccServices.UpdateUser(body)
         .subscribe((data) => {
           this.currentUserEdit = data;
