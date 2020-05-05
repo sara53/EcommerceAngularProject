@@ -25,7 +25,7 @@
                         <div *ngIf="registrationForm.get('username').errors.maxlength">MaxLength length is 20</div>
                         <div *ngIf="registrationForm.get('username').errors.pattern">Username must not contain special
                             Characters</div>
-                        <div *ngIf="DuplicateUserName">Username is already taken</div>
+                        <!-- <div *ngIf="DuplicateUserName">Username is already taken</div> -->
                     </div>
 
                     <small class="text-danger" *ngIf="DuplicateUserName"> Username is already taken </small>

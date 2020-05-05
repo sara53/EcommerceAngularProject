@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import 'rxjs/operators/map';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AccountService {
   baseURL = "http://localhost:36417";
   constructor(private myClient: HttpClient) { }
+
+
+  UpdateUser(updatedUser: Object): Observable<Object> {
+    console.log(updatedUser)
+    const headers = { 'content-type': 'application/json'}  
+    return this.myClient.post(`${this.baseURL}/account/Update`, updatedUser);
+  }
 
   IsAdmin() {
     let jwtHelper = new JwtHelperService();
