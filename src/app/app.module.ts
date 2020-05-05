@@ -18,6 +18,8 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { EditProfileComponent } from './Components/profile/edit-profile/edit-profile.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { EditProfileService } from './Services/edit-profile.service';
+import { AdminProductComponent } from './Components/Admin/admin-product/admin-product.component';
+import { UpdateProductComponent } from './Components/Admin/update-product/update-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,8 @@ import { EditProfileService } from './Services/edit-profile.service';
     ProfileComponent,
     EditProfileComponent,
     RegistrationComponent,
+    AdminProductComponent,
+    UpdateProductComponent,
     
 
   ],
