@@ -18,6 +18,7 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { EditProfileComponent } from './Components/profile/edit-profile/edit-profile.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { EditProfileService } from './Services/edit-profile.service';
+import { CreateProductComponent } from './Components/create-product/create-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { EditProfileService } from './Services/edit-profile.service';
     ProfileComponent,
     EditProfileComponent,
     RegistrationComponent,
+    CreateProductComponent,
     
 
   ],

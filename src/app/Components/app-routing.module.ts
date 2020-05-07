@@ -10,6 +10,7 @@ import { CategoriesService } from '../Services/categories.service';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import {RegistrationComponent} from './registration/registration.component'
+import{CreateProductComponent} from './create-product/create-product.component'
 
 
 const routes:Routes=[
@@ -22,6 +23,8 @@ const routes:Routes=[
   {path:'profile',component:ProfileComponent},
   {path:'editProfile',component:EditProfileComponent},
   {path:'Registration',component:RegistrationComponent},
+  {path:'CreateProduct',component:CreateProductComponent},
+
 
   
 

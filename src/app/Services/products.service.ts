@@ -14,5 +14,8 @@ export class ProductsService {
     return this.myClient.get(`${this.baseURL}/api/products`);
   }
 
+  addProduct(product){
+    return this.myClient.post(`${this.baseURL}/api/products` , product);
+  }
 
 }
