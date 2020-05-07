@@ -10,7 +10,12 @@ import { CategoriesService } from '../Services/categories.service';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import {RegistrationComponent} from './registration/registration.component'
+<<<<<<< HEAD
 import{CreateProductComponent} from './create-product/create-product.component'
+=======
+import { AdminProductComponent } from './Admin/admin-product/admin-product.component';
+import { UpdateProductComponent } from './Admin/update-product/update-product.component';
+>>>>>>> a8bdc2d4bf7ddaa6f73056cf122f7913a41cf1fc
 
 
 const routes:Routes=[
@@ -23,7 +28,13 @@ const routes:Routes=[
   {path:'profile',component:ProfileComponent},
   {path:'editProfile',component:EditProfileComponent},
   {path:'Registration',component:RegistrationComponent},
+<<<<<<< HEAD
   {path:'CreateProduct',component:CreateProductComponent},
+=======
+  {path:'admin',component:AdminProductComponent},
+  {path:'updateProduct/:id',component:UpdateProductComponent},
+
+>>>>>>> a8bdc2d4bf7ddaa6f73056cf122f7913a41cf1fc
 
 
   

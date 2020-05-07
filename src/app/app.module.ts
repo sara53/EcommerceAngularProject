@@ -18,7 +18,12 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { EditProfileComponent } from './Components/profile/edit-profile/edit-profile.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { EditProfileService } from './Services/edit-profile.service';
+<<<<<<< HEAD
 import { CreateProductComponent } from './Components/create-product/create-product.component';
+=======
+import { AdminProductComponent } from './Components/Admin/admin-product/admin-product.component';
+import { UpdateProductComponent } from './Components/Admin/update-product/update-product.component';
+>>>>>>> a8bdc2d4bf7ddaa6f73056cf122f7913a41cf1fc
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +36,12 @@ import { CreateProductComponent } from './Components/create-product/create-produ
     ProfileComponent,
     EditProfileComponent,
     RegistrationComponent,
+<<<<<<< HEAD
     CreateProductComponent,
+=======
+    AdminProductComponent,
+    UpdateProductComponent,
+>>>>>>> a8bdc2d4bf7ddaa6f73056cf122f7913a41cf1fc
     
 
   ],
