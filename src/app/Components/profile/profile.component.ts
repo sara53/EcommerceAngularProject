@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
       },
         (err) => {
           console.log(err.statusText);
+          this.isDataLoaded = false;
         })
     console.log(subscrription)
     this.GetPendingOrders()

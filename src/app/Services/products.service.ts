@@ -14,5 +14,20 @@ export class ProductsService {
     return this.myClient.get(`${this.baseURL}/api/products`);
   }
 
+  addProduct(product){
+    return this.myClient.post(`${this.baseURL}/api/products` , product);
+  }
+  
+  DeleteProduct(productID){
+    return this.myClient.delete(`${this.baseURL}/api/products/${productID}`);
+  }
+
+  getProductById(productID){
+    return this.myClient.get(`${this.baseURL}/api/products/${productID}`);
+  }
+
+  updateProduct(productID,product){
+    return this.myClient.put(`${this.baseURL}/api/Products/${productID}`,product);
+  }
 
 }

@@ -11,7 +11,9 @@ import { ShoppingCartComponent } from './ShoppingCart/shopping-cart/shopping-car
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { RegistrationComponent } from './registration/registration.component'
-
+import { CreateProductComponent } from './create-product/create-product.component'
+import { AdminProductComponent } from './Admin/admin-product/admin-product.component';
+import { UpdateProductComponent } from './Admin/update-product/update-product.component';
 
 
 const routes: Routes = [
@@ -21,12 +23,15 @@ const routes: Routes = [
   { path: 'product', component: ProductsComponent },
   { path: 'product/:id', component: ProductsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'shoppingCart', component: ShoppingCartComponent, runGuardsAndResolvers: 'always' },
   { path: 'profile', component: ProfileComponent },
   { path: 'editProfile', component: EditProfileComponent },
   { path: 'Registration', component: RegistrationComponent },
+  { path: 'CreateProduct', component: CreateProductComponent },
+  { path: 'admin', component: AdminProductComponent },
+  { path: 'updateProduct/:id', component: UpdateProductComponent },
+  { path: 'shoppingCart', component: ShoppingCartComponent, runGuardsAndResolvers: 'always' },
   { path: '**', component: ErrorComponent },
-]
+];
 @NgModule({
   declarations: [],
   imports: [

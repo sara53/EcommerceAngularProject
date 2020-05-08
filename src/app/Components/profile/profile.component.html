@@ -5,8 +5,8 @@
 			<!-- General Information -->
 			<div class="general_info d-flex flex-xl-column flex-md-row flex-column">
 				<div>
-					<div class="general_info_image">
-						<img src="assets/img/default.png" class="img-responsive">
+					<div class="general_info_image"  *ngIf = "isDataLoaded">
+						<img [src] = "currentUser.image" class="img-responsive">
 					</div>
 				</div>
 				<div class="general_info_content" *ngIf="isDataLoaded">

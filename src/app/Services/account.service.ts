@@ -13,11 +13,10 @@ export class AccountService {
   constructor(private myClient: HttpClient) { }
 
 
-  UpdateUser(data: Object, id: string): Observable<Object> {
-
-    console.log(data)
+  UpdateUser(updatedUser: Object): Observable<Object> {
+    console.log(updatedUser)
     const headers = { 'content-type': 'application/json' }
-    return this.myClient.post(`http://localhost:36417/Account/Update/${id}`, data);
+    return this.myClient.post(`${this.baseURL}/account/Update`, updatedUser);
   }
 
   IsAdmin() {
