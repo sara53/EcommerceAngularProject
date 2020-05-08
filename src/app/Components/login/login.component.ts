@@ -39,6 +39,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  NavToRegisteration(){
+    console.log("d")
+   this.router.navigate(['/Registration']);
+  }
+
   // login(user) {
   //   console.log(user)
   //   this.accService.login(user)
@@ -52,6 +57,7 @@ export class LoginComponent implements OnInit {
   //       this.invalidLogin = true;
   //     })
   // }
+  
   show(a) {
     var x = $("#" + a)
     if (x.attr('type') == "password") {

@@ -8,6 +8,10 @@ import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { CategoriesService } from '../Services/categories.service';
 import { ShoppingCartComponent } from './ShoppingCart/shopping-cart/shopping-cart.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { RegistrationComponent } from './registration/registration.component'
+
 
 
 const routes: Routes = [
@@ -19,8 +23,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent, runGuardsAndResolvers: 'always' },
   { path: '**', component: ErrorComponent },
-
-
+  { path: 'profile', component: ProfileComponent },
+  { path: 'editProfile', component: EditProfileComponent },
+  { path: 'Registration', component: RegistrationComponent },
 ]
 @NgModule({
   declarations: [],

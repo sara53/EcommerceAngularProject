@@ -16,6 +16,10 @@ import { AccountService } from './Services/account.service';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ShoppingCartComponent } from './Components/ShoppingCart/shopping-cart/shopping-cart.component';
 
+import { ProfileComponent } from './Components/profile/profile.component';
+import { EditProfileComponent } from './Components/profile/edit-profile/edit-profile.component';
+import { RegistrationComponent } from './Components/registration/registration.component';
+import { EditProfileService } from './Services/edit-profile.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +30,10 @@ import { ShoppingCartComponent } from './Components/ShoppingCart/shopping-cart/s
     ErrorComponent,
     ProductComponent,
     ShoppingCartComponent,
+    ProfileComponent,
+    EditProfileComponent,
+    RegistrationComponent,
+
 
   ],
   imports: [
@@ -36,12 +44,14 @@ import { ShoppingCartComponent } from './Components/ShoppingCart/shopping-cart/s
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    BrowserModule
   ],
   providers: [
     ProductsService,
     CategoriesService,
-    AccountService
+    AccountService,
+    EditProfileService
   ],
   bootstrap: [AppComponent]
 })

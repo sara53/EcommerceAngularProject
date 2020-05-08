@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import 'rxjs/operators/map';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AccountService {
   baseURL = "http://localhost:36417";
   constructor(private myClient: HttpClient) { }
+
+
+  UpdateUser(data: Object, id: string): Observable<Object> {
+
+    console.log(data)
+    const headers = { 'content-type': 'application/json' }
+    return this.myClient.post(`http://localhost:36417/Account/Update/${id}`, data);
+  }
 
   IsAdmin() {
     let jwtHelper = new JwtHelperService();
@@ -27,7 +36,14 @@ export class AccountService {
       return null;
     //return jwtHelper.decodeToken(token).sub.charAt(0).toUpperCase() + jwtHelper.decodeToken(token).sub.slice(1)
     return jwtHelper.decodeToken(token).sub
+  }
 
+  GetCurrentUserInfo() {
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer ' + token);
+    return this.myClient.get(`${this.baseURL}/api/users/GetCurrentUserInfo`,
+      { headers: headers })
   }
   currentUserID() {
     let jwtHelper = new JwtHelperService();
