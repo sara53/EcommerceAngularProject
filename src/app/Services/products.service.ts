@@ -14,10 +14,10 @@ export class ProductsService {
     return this.myClient.get(`${this.baseURL}/api/products`);
   }
 
-<<<<<<< HEAD
   addProduct(product){
     return this.myClient.post(`${this.baseURL}/api/products` , product);
-=======
+  }
+  
   DeleteProduct(productID){
     return this.myClient.delete(`${this.baseURL}/api/products/${productID}`);
   }
@@ -28,8 +28,6 @@ export class ProductsService {
 
   updateProduct(productID,product){
     return this.myClient.put(`${this.baseURL}/api/Products/${productID}`,product);
-
->>>>>>> a8bdc2d4bf7ddaa6f73056cf122f7913a41cf1fc
   }
 
 }

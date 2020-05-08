@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { ProductsService } from 'src/app/Services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-product',
@@ -12,37 +13,38 @@ export class CreateProductComponent implements OnInit {
 
   IsFileSelected = true;
   IsCategorySelected = true;
-  
+
   imageSrc: string = null;
 
-  categories:any;
+  categories: any;
   categorySelected;
 
-  constructor(private categoriesService:CategoriesService , private productService: ProductsService) {}
+  constructor(private categoriesService: CategoriesService, private productService: ProductsService, private router: Router) { }
 
   ngOnInit() {
     this.categoriesService.getAllCategories().subscribe(
-      (data) => {console.log(data);
-        this.categories = data;      
+      (data) => {
+        console.log(data);
+        this.categories = data;
       },
-      (err) => {console.log(err)}
-      
+      (err) => { console.log(err) }
+
     );
   }
 
-  selectChangeHandler(e){
+  selectChangeHandler(e) {
     this.categorySelected = e.target.value;
   }
 
 
   CreateProductForm = new FormGroup({
-    category: new FormControl('',Validators.required),
-    price: new FormControl('',Validators.required),
-    details: new FormControl('',Validators.required),
-    title: new FormControl('',Validators.required),
-   // file: new FormControl('',Validators.required)
-   file: new FormControl('', [Validators.required]),
-   fileSource: new FormControl('', [Validators.required]),
+    category: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.required),
+    details: new FormControl('', Validators.required),
+    title: new FormControl('', Validators.required),
+    // file: new FormControl('',Validators.required)
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required]),
   })
 
   onFileChange(event) {
@@ -59,18 +61,24 @@ export class CreateProductComponent implements OnInit {
     }
   }
 
- 
-  Submit(formData){
 
-    let data = {Title: formData.title , Details: formData.details , Image: this.imageSrc,
-       Price: formData.price , CategoryID: formData.category};
+  Submit(formData) {
 
-    if(this.CreateProductForm.controls.fileSource.status === "INVALID") {this.IsFileSelected = false}
-    if(this.CreateProductForm.controls.category.status === "INVALID") {this.IsCategorySelected = false}
+    let data = {
+      Title: formData.title, Details: formData.details, Image: this.imageSrc,
+      Price: formData.price, CategoryID: formData.category
+    };
 
-    if(this.CreateProductForm.valid){
+    if (this.CreateProductForm.controls.fileSource.status === "INVALID") { this.IsFileSelected = false }
+    if (this.CreateProductForm.controls.category.status === "INVALID") { this.IsCategorySelected = false }
+
+    if (this.CreateProductForm.valid) {
       this.productService.addProduct(data).subscribe(
-        (data)=> console.log(data)
+        (data) => {
+          console.log(data)
+          this.router.navigateByUrl('/admin')
+        }
+
       )
     }
   }
