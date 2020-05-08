@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/Services/account.service';
+import { OrderService } from '../../Services/order.service';
+import { ShoppingCartService } from '../../Services/shopping-cart.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,25 +12,69 @@ import { AccountService } from 'src/app/Services/account.service';
 export class ProfileComponent implements OnInit {
   currentUser;
   isDataLoaded = false;
-
-  constructor(private router:Router , private currentUserService: AccountService) { }
+  PendingOrders;
+  AcceptedOrders;
+  RejectedOrders;
+  AllOrders;//hytn2l
+  constructor(private router: Router, private orderService: OrderService, private shoppingService: ShoppingCartService, private currentUserService: AccountService) { }
 
   ngOnInit(): void {
     let subscrription = this.currentUserService.GetCurrentUserInfo()
-    .subscribe((data) => {
-      this.currentUser = data;
-      console.log(this.currentUser)
-      this.isDataLoaded  = true;
-    },
-      (err) => {
-         console.log(err.statusText);
-      })
-      console.log(subscrription)
+      .subscribe((data) => {
+        this.currentUser = data;
+        console.log(this.currentUser)
+        this.isDataLoaded = true;
+      },
+        (err) => {
+          console.log(err.statusText);
+        })
+    console.log(subscrription)
+    this.GetPendingOrders()
+    this.GetRejectedOrders()
+    this.GetAcceptedOrders()
+    this.GetAllOrders()
+  }
+  GoEdit() {
+    this.router.navigateByUrl('/editProfile');
   }
 
+  GetPendingOrders() {
+    this.orderService.GetPendingOrders().subscribe((response) => {
+      this.PendingOrders = response
+      console.log(this.PendingOrders)
+    }, (error => {
+    }))
+  }
+  GetRejectedOrders() {
+    this.orderService.GetRejectedOrders().subscribe((response) => {
+      this.RejectedOrders = response
+      console.log(this.RejectedOrders)
+    }, (error => {
+    }))
+  }
+  GetAcceptedOrders() {
+    this.orderService.GetAcceptedOrders().subscribe((response) => {
+      this.AcceptedOrders = response
+      console.log(this.AcceptedOrders)
+    }, (error => {
+    }))
+  }
+  CancelOrder(id) {
+    this.shoppingService.cancelOrder(id).subscribe((response) => {
+      this.ngOnInit()
+    }, (error => {
 
-  GoEdit(){
-    this.router.navigateByUrl('/editProfile');
+    }))
+  }
+  GetAllOrders() {//hytn2l
+    this.orderService.GetAllOrders().subscribe((response) => {
+      console.log("All Orders")
+      console.log(response)
+      this.AllOrders = response
+    })
+  }
+  onChange(value) {
+    console.log(value)
   }
 
 }

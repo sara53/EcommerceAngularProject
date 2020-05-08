@@ -19,6 +19,9 @@ export class ShoppingCartService {
   checkOut(orderID) {
     return this.myClient.get(`${this.baseURL}/api/Orders/CheckOut/` + orderID)
   }
+  cancelOrder(orderID) {
+    return this.myClient.get(`${this.baseURL}/api/Orders/CancelOrder/` + orderID)
+  }
   removeProduct(orderID, productID) {
     return this.myClient.get(`${this.baseURL}/api/OrderDetails/removeProduct/OrderID=` + orderID +
       `&ProductID=` + productID)

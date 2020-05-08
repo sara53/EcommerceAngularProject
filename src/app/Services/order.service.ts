@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AccountService } from './account.service';
 
 @Injectable({
@@ -41,6 +41,33 @@ export class OrderService {
   GetTotalQuantity() {
     console.log("hello")
     return this.myClient.get(`${this.baseURL}/api/Orders/GetTotalQuantity/` + this.AccService.currentUserID())
+  }
+  GetPendingOrders() {
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer ' + token);
+    return this.myClient.get(`${this.baseURL}/api/Orders/GetPendingOrders`,
+      { headers: headers });
+  }
+  GetRejectedOrders() {
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer ' + token);
+    return this.myClient.get(`${this.baseURL}/api/Orders/GetRejectedOrders`,
+      { headers: headers });
+  }
+  GetAcceptedOrders() {
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer ' + token);
+    return this.myClient.get(`${this.baseURL}/api/Orders/GetAcceptedOrders`,
+      { headers: headers });
+  }
+  GetAllOrders() {
+    // let token = localStorage.getItem('token');
+    // let headers = new HttpHeaders();
+    // headers = headers.set('Authorization', 'Bearer ' + token);
+    return this.myClient.get(`${this.baseURL}/api/Orders`);
   }
 
 }

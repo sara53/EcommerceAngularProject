@@ -22,10 +22,10 @@ const routes: Routes = [
   { path: 'product/:id', component: ProductsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent, runGuardsAndResolvers: 'always' },
-  { path: '**', component: ErrorComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'editProfile', component: EditProfileComponent },
   { path: 'Registration', component: RegistrationComponent },
+  { path: '**', component: ErrorComponent },
 ]
 @NgModule({
   declarations: [],

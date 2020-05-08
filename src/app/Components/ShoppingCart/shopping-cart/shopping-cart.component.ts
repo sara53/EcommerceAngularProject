@@ -25,11 +25,12 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.checkOut(orderID).subscribe(res => {
       console.log(res);
       console.log("kda 5las 3ml cheackout")
+      this.ngOnInit()
     },
       err => {
         console.log("error" + err)
       })
-    this.ngOnInit()
+
     //this.router.onSameUrlNavigation
   }
   removeProduct(orderID, productID) {
@@ -43,6 +44,11 @@ export class ShoppingCartComponent implements OnInit {
       if (lastProduct == true) {
         console.log("b2ttrueeecheck")
         this.checkOut(orderID)
+        this.cartService.cancelOrder(orderID).subscribe(cancelRes => {
+          //console.log(cancelRes)
+        }, (err => {
+
+        }))
       }
       this.ngOnInit()
     },
@@ -51,6 +57,5 @@ export class ShoppingCartComponent implements OnInit {
       })
     //this.ngOnInit()
     //this.router.navigateByUrl('shoppingCart')
-
   }
 }
