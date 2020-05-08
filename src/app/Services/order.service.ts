@@ -69,5 +69,9 @@ export class OrderService {
     // headers = headers.set('Authorization', 'Bearer ' + token);
     return this.myClient.get(`${this.baseURL}/api/Orders`);
   }
-
+  UpdateOrder(UpdatedOrder, stateValue) {
+    console.log(UpdatedOrder)
+    UpdatedOrder.state = stateValue;
+    return this.myClient.put(`${this.baseURL}/api/Orders/` + UpdatedOrder.orderID, UpdatedOrder);
+  }
 }

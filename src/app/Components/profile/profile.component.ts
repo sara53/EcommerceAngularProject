@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
   PendingOrders;
   AcceptedOrders;
   RejectedOrders;
-  AllOrders;//hytn2l
   constructor(private router: Router, private orderService: OrderService, private shoppingService: ShoppingCartService, private currentUserService: AccountService) { }
 
   ngOnInit(): void {
@@ -33,7 +32,6 @@ export class ProfileComponent implements OnInit {
     this.GetPendingOrders()
     this.GetRejectedOrders()
     this.GetAcceptedOrders()
-    this.GetAllOrders()
   }
   GoEdit() {
     this.router.navigateByUrl('/editProfile');
@@ -67,15 +65,4 @@ export class ProfileComponent implements OnInit {
 
     }))
   }
-  GetAllOrders() {//hytn2l
-    this.orderService.GetAllOrders().subscribe((response) => {
-      console.log("All Orders")
-      console.log(response)
-      this.AllOrders = response
-    })
-  }
-  onChange(value) {
-    console.log(value)
-  }
-
 }

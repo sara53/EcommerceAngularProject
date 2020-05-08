@@ -23,6 +23,7 @@ import { EditProfileService } from './Services/edit-profile.service';
 import { CreateProductComponent } from './Components/create-product/create-product.component';
 import { AdminProductComponent } from './Components/Admin/admin-product/admin-product.component';
 import { UpdateProductComponent } from './Components/Admin/update-product/update-product.component';
+import { AdminordersComponent } from './Components/Admin/admin-orders/adminorders/adminorders.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { UpdateProductComponent } from './Components/Admin/update-product/update
     CreateProductComponent,
     AdminProductComponent,
     UpdateProductComponent,
+    AdminordersComponent,
   ],
   imports: [
     BrowserModule,

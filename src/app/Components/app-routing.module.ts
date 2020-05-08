@@ -14,6 +14,7 @@ import { RegistrationComponent } from './registration/registration.component'
 import { CreateProductComponent } from './create-product/create-product.component'
 import { AdminProductComponent } from './Admin/admin-product/admin-product.component';
 import { UpdateProductComponent } from './Admin/update-product/update-product.component';
+import { AdminordersComponent } from './Admin/admin-orders/adminorders/adminorders.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminProductComponent },
   { path: 'updateProduct/:id', component: UpdateProductComponent },
   { path: 'shoppingCart', component: ShoppingCartComponent, runGuardsAndResolvers: 'always' },
+  { path: 'adminorders', component: AdminordersComponent },
   { path: '**', component: ErrorComponent },
 ];
 @NgModule({
