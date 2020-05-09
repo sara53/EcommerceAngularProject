@@ -15,23 +15,24 @@ import { CreateProductComponent } from './create-product/create-product.componen
 import { AdminProductComponent } from './Admin/admin-product/admin-product.component';
 import { UpdateProductComponent } from './Admin/update-product/update-product.component';
 import { AdminordersComponent } from './Admin/admin-orders/adminorders/adminorders.component';
-
+import { AuthGuardAdminService } from '../Services/auth-guard-admin.service';
+import { AuthGuardUserService } from '../Services/auth-guard-user.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'product', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'product', component: ProductsComponent },
-  { path: 'product/:id', component: ProductsComponent },
+  { path: 'product', component: ProductsComponent, canActivate: [AuthGuardUserService] },
+  { path: 'product/:id', component: ProductsComponent, canActivate: [AuthGuardUserService] },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'editProfile', component: EditProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardUserService] },
+  { path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGuardUserService] },
   { path: 'Registration', component: RegistrationComponent },
-  { path: 'CreateProduct', component: CreateProductComponent },
-  { path: 'admin', component: AdminProductComponent },
-  { path: 'updateProduct/:id', component: UpdateProductComponent },
-  { path: 'shoppingCart', component: ShoppingCartComponent, runGuardsAndResolvers: 'always' },
-  { path: 'adminorders', component: AdminordersComponent },
+  { path: 'CreateProduct', component: CreateProductComponent, canActivate: [AuthGuardAdminService] },
+  { path: 'admin', component: AdminProductComponent, canActivate: [AuthGuardAdminService] },
+  { path: 'updateProduct/:id', component: UpdateProductComponent, canActivate: [AuthGuardAdminService] },
+  { path: 'shoppingCart', component: ShoppingCartComponent, canActivate: [AuthGuardUserService] },
+  { path: 'adminorders', component: AdminordersComponent, canActivate: [AuthGuardAdminService] },
   { path: '**', component: ErrorComponent },
 ];
 @NgModule({
