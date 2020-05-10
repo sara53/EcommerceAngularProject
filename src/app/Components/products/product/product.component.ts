@@ -3,6 +3,7 @@ import { AccountService } from '../../../Services/account.service';
 import { OrderService } from '../../../Services/order.service';
 import { Subscription } from 'rxjs';
 import { AppComponent } from '../../../app.component';
+import { ProductsService } from '../../../Services/products.service';
 
 @Component({
   selector: 'app-product',
@@ -11,7 +12,9 @@ import { AppComponent } from '../../../app.component';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private AccService: AccountService, private OrderService: OrderService) {
+  constructor(private AccService: AccountService,
+    private productService: ProductsService,
+    private OrderService: OrderService) {
 
   }
   @Input('product') product;
@@ -32,7 +35,6 @@ export class ProductComponent implements OnInit {
     //     this.Quantity = result;
     //   })
   }
-  @Output() myEvent = new EventEmitter();
   AddCart() {
     this.OrderService.GetCurrentOrder().subscribe(CurrOrderID => {
       if (CurrOrderID != 0) {
@@ -40,7 +42,7 @@ export class ProductComponent implements OnInit {
         this.OrderService.AddProductsToOrder(this.product.productID, CurrOrderID).
           subscribe(result => {
             if (result) {
-              console.log(result)
+              this.productService.addCartCount();
             }
           })
       }
@@ -52,13 +54,12 @@ export class ProductComponent implements OnInit {
               this.OrderService.AddProductsToOrder(this.product.productID, NewOrderID["orderID"]).
                 subscribe(result => {
                   if (result) {
-                    console.log(result)
+                    this.productService.addCartCount();
                   }
                 })
             }
           })
       }
-      this.myEvent.emit()
       this.ngOnInit()
     })
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AccountService } from './Services/account.service';
 import { OrderService } from './Services/order.service';
 import { Subscription } from 'rxjs';
+import { ProductsService } from './Services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor(public accService: AccountService, public orderService: OrderService) {
+  constructor(public accService: AccountService,
+    public productService: ProductsService
+    , public orderService: OrderService) {
   }
   ngOnDestroy(): void {
     this.Subscription.unsubscribe()
@@ -17,6 +20,9 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.orderService.GetTotalQuantity().subscribe(result => {
       this.Total = result
+    })
+    this.productService.myEvent.subscribe((count) => {
+      this.Total = count;
     })
   }
   title = 'project';

@@ -17,9 +17,11 @@ export class ShoppingCartService {
       { headers: headers });
   }
   checkOut(orderID) {
+    console.log("ra7llcheckoutahooooooo" + orderID)
     return this.myClient.get(`${this.baseURL}/api/Orders/CheckOut/` + orderID)
   }
   cancelOrder(orderID) {
+    console.log("ra7llcancel" + orderID)
     return this.myClient.get(`${this.baseURL}/api/Orders/CancelOrder/` + orderID)
   }
   removeProduct(orderID, productID) {

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ShoppingCartService } from '../../../Services/shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ProductsService } from '../../../Services/products.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,52 +11,61 @@ import { Router } from '@angular/router';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor(private cartService: ShoppingCartService, private router: Router) { }
+  constructor(private cartService: ShoppingCartService,
+    private productService: ProductsService
+    , private router: Router) { }
   Order;
+  lastProduct: boolean = false;
+
   ngOnInit(): void {
     console.log("yndhhadlw2ty")
+    console.log("lastproduct", this.lastProduct)
     this.cartService.GetShoppingCartItems().subscribe(res => {
       this.Order = res
+      //console.log("res" + res)
     }, (err) => {
       console.log(err)
     })
   }
   checkOut(orderID) {
-    console.log("hy3mlcheck")
+    //console.log("hy3mlcheck")
     this.cartService.checkOut(orderID).subscribe(res => {
-      console.log(res);
-      console.log("kda 5las 3ml cheackout")
+      //console.log("kda 5las 3ml cheackout")
+      this.productService.removeCartCount()
       this.ngOnInit()
     },
       err => {
         console.log("error" + err)
       })
-
-    //this.router.onSameUrlNavigation
   }
-  removeProduct(orderID, productID) {
+  removeProduct(orderID, productID, quantity) {//h5od qunatity
     //console.log(orderID, productID)
-    var lastProduct: boolean = false;
     if (this.Order.orderDetails.length == 1) {
-      console.log("25erProduct")
-      lastProduct = true;
+      //console.log("25erProduct")
+      this.lastProduct = true;
     }
     this.cartService.removeProduct(orderID, productID).subscribe(res => {
-      if (lastProduct == true) {
-        console.log("b2ttrueeecheck")
-        this.checkOut(orderID)
+      if (this.lastProduct == true) {
         this.cartService.cancelOrder(orderID).subscribe(cancelRes => {
-          //console.log(cancelRes)
-        }, (err => {
+          this.cartService.checkOut(orderID).subscribe(result => {
+            if (result != 0) {
+              this.productService.removeCartCount()
+              this.lastProduct = false;
+              this.ngOnInit()
+            }
+          }, (err => {
 
-        }))
+          }))
+        },
+          (err => {
+            console.log("error" + err)
+          })
+        )
       }
-      this.ngOnInit()
-    },
-      err => {
-        console.log("error" + err)
-      })
-    //this.ngOnInit()
-    //this.router.navigateByUrl('shoppingCart')
+      else {
+        this.productService.deletefromCartCount(quantity)
+        this.ngOnInit()
+      }
+    })
   }
 }

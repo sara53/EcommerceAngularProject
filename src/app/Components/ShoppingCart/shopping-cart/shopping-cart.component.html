@@ -37,7 +37,8 @@
                         <img [src]="orderD.product.image" width="60" height="60">
                     </th>
                     <th>{{orderD.product.title}}
-                        <div class="iconDiv" (click)="removeProduct(Order.orderID,orderD.product.productID)"> <i
+                        <div class="iconDiv"
+                            (click)="removeProduct(Order.orderID,orderD.product.productID,orderD.quantity)"> <i
                                 class="fa fa-trash-o"></i>
                             Remove</div>
                     </th>
