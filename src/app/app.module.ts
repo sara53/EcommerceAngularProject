@@ -21,6 +21,7 @@ import { EditProfileService } from './Services/edit-profile.service';
 import { CreateProductComponent } from './Components/create-product/create-product.component';
 import { AdminProductComponent } from './Components/Admin/admin-product/admin-product.component';
 import { UpdateProductComponent } from './Components/Admin/update-product/update-product.component';
+import { PasswordStrengthComponent } from './Components/registration/password-strength/password-strength.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UpdateProductComponent } from './Components/Admin/update-product/update
     CreateProductComponent,
     AdminProductComponent,
     UpdateProductComponent,
+    PasswordStrengthComponent,
     
 
   ],
