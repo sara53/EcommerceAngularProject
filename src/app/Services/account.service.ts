@@ -15,7 +15,7 @@ export class AccountService {
 
   UpdateUser(updatedUser: Object): Observable<Object> {
     console.log(updatedUser)
-    const headers = { 'content-type': 'application/json'}  
+    const headers = { 'content-type': 'application/json' }
     return this.myClient.post(`${this.baseURL}/account/Update`, updatedUser);
   }
 
@@ -37,14 +37,22 @@ export class AccountService {
     return jwtHelper.decodeToken(token).sub
   }
 
-  GetCurrentUserInfo(){
+  GetCurrentUserInfo() {
     let token = localStorage.getItem('token');
     let headers = new HttpHeaders();
-    headers = headers.set('Authorization', 'Bearer '+ token);
-    return this.myClient.get(`${this.baseURL}/api/users/GetCurrentUserInfo`, 
-    {headers:headers})
+    headers = headers.set('Authorization', 'Bearer ' + token);
+    return this.myClient.get(`${this.baseURL}/api/users/GetCurrentUserInfo`,
+      { headers: headers })
   }
-  
+  currentUserID() {
+    let jwtHelper = new JwtHelperService();
+    let token = localStorage.getItem('token');
+    if (!token)
+      return null;
+    //return jwtHelper.decodeToken(token).sub.charAt(0).toUpperCase() + jwtHelper.decodeToken(token).sub.slice(1)
+    return jwtHelper.decodeToken(token).kid
+
+  }
 
   isLoggedIn() {
     let jwtHelper = new JwtHelperService();
