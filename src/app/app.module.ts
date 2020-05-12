@@ -22,13 +22,10 @@ import { EditProfileService } from './Services/edit-profile.service';
 import { CreateProductComponent } from './Components/create-product/create-product.component';
 import { AdminProductComponent } from './Components/Admin/admin-product/admin-product.component';
 import { UpdateProductComponent } from './Components/Admin/update-product/update-product.component';
-<<<<<<< HEAD
 import { PasswordStrengthComponent } from './Components/registration/password-strength/password-strength.component';
-=======
 import { AdminordersComponent } from './Components/Admin/admin-orders/adminorders/adminorders.component';
 import { AuthGuardAdminService } from './Services/auth-guard-admin.service';
 import { AuthGuardUserService } from './Services/auth-guard-user.service';
->>>>>>> c37ae8077df8295dfbd4bdc8f4400dd267a4eb46
 
 @NgModule({
   declarations: [
