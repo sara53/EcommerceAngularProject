@@ -3,6 +3,9 @@ import { Router, Routes, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as $ from 'jquery';
 import { AccountService } from 'src/app/Services/account.service';
+import { Observable } from 'rxjs';
+import { AppError } from '../../Commons/app-error';
+import { NotFound } from '../../Commons/not-found';
 
 
 @Component({
@@ -30,7 +33,7 @@ export class LoginComponent implements OnInit {
         Password: this.loginForm.controls.Password.value
       }
       this.accService.login(user)
-        .subscribe(result => {
+        .subscribe((result) => {
           if (result) {
             var isAdmin = this.accService.IsAdmin();
             let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
@@ -42,9 +45,15 @@ export class LoginComponent implements OnInit {
               this.router.navigate([returnUrl || '/product']);
           }
         }
-          , (err) => {
+          , (error: AppError) => {
             console.log("No Error IN login")
             this.invalidLogin = true;
+            console.log(error)
+            console.log(error instanceof NotFound)
+            if (error instanceof NotFound)
+              console.log("Not found")
+            else
+              console.log("error")
           })
     }
   }

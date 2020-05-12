@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 //import 'rxjs/operators/map';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { NotFound } from '../Commons/not-found';
+import { AppError } from '../Commons/app-error';
+
 
 @Injectable({
   providedIn: 'root'
@@ -70,7 +73,14 @@ export class AccountService {
 
   login(user) {
     return this.myClient.post(`${this.baseURL}/Account/Login`, user)
-      .pipe(map(response => {
+      .pipe(catchError((error: Response) => {
+        console.log(error)
+        if (error.status === 400) {
+          console.log("heloooooooooo")
+          return throwError(new NotFound(error));
+        }
+        return throwError(new AppError(error));
+      }), map(response => {
         if (response && response.hasOwnProperty("token")) {
           // console.log(response)
           // console.log("token here " + response["token"])

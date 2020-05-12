@@ -12,13 +12,25 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="about">About</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="product" *ngIf="accService.isLoggedIn()">Product</a>
+      <li class="nav-item" *ngIf="accService.isLoggedIn()&& !accService.IsAdmin()">
+        <a class="nav-link" routerLink="product">Product</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="profile" *ngIf="accService.isLoggedIn()">Profile</a>
+      <li class="nav-item" *ngIf="!accService.isLoggedIn()">
+        <a class="nav-link" routerLink="login">Product</a>
       </li>
-      <li class="nav-item" *ngIf="accService.isLoggedIn()">
+      <li class="nav-item" *ngIf="accService.isLoggedIn()&& !accService.IsAdmin()">
+        <a class="nav-link" routerLink="profile">Profile</a>
+      </li>
+      <li class="nav-item" *ngIf="!accService.isLoggedIn()">
+        <a class="nav-link" routerLink="login">Profile</a>
+      </li>
+      <li class="nav-item" *ngIf="accService.isLoggedIn()&&accService.IsAdmin()">
+        <a class="nav-link" routerLink="admin">Product</a>
+      </li>
+      <li class="nav-item" *ngIf="accService.isLoggedIn()&&accService.IsAdmin()">
+        <a class="nav-link" routerLink="adminorders">Orders</a>
+      </li>
+      <li class=" nav-item" *ngIf="accService.isLoggedIn() && !accService.IsAdmin()">
         <a class="nav-link" routerLink="profile">Hi, {{accService.currentUser()}}</a>
       </li>
       <li class="nav-item" *ngIf="accService.isLoggedIn()">
@@ -27,8 +39,10 @@
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <i class="fas fa-shopping-cart" routerLink="shoppingCart"></i>
-      <a routerLink="shoppingCart" class="badge badge-info">{{Total}}</a>
+      <i class="fas fa-shopping-cart" routerLink="shoppingCart"
+        *ngIf="accService.isLoggedIn() && !accService.IsAdmin()"></i>
+      <a routerLink="shoppingCart" class="badge badge-info"
+        *ngIf="accService.isLoggedIn() && !accService.IsAdmin()">{{Total}}</a>
       <span class="">
         <a class="nav-link btn btn-outline-info" routerLink="login" *ngIf="!accService.isLoggedIn()">Login/Sign UP</a>
       </span>
