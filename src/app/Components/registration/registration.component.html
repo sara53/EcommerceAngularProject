@@ -47,11 +47,13 @@
                     <input mdbInput formControlName="Password" required type="password" id="Password"
                         class="form-control">
                     <label for=" Password">Password</label>
+                    <app-password-strength  [passwordToCheck]="registrationForm.value.Password"></app-password-strength>
 
                     <div class="text-danger"
                         *ngIf="registrationForm.get('Password').touched && registrationForm.get('Password').errors != null">
                         <div *ngIf="registrationForm.get('Password').errors.required">Required</div>
                         <div *ngIf="registrationForm.get('Password')"> </div>
+                        
                     </div>
                 </div>
 
@@ -94,7 +96,7 @@
 
                 <!-- Sign up button -->
                 <div class="mt-5 ">
-                    <button type="submit" class="btn"><i class="fa fa-envelope Icon"></i> Register</button>
+                    <button type="submit" class="btn"  [disabled]="!formValid()"><i class="fa fa-envelope Icon"></i> Register</button>
                 </div>
 
             </form>
