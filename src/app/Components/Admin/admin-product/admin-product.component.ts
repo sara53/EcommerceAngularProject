@@ -63,6 +63,11 @@ export class AdminProductComponent implements OnInit {
   }
 
 
+  addProduct(){
+    this.router.navigateByUrl('/CreateProduct')
+  }
+
+
 
 
 }

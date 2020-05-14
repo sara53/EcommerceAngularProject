@@ -1,4 +1,3 @@
-
 <div class="super_container">
 	<div class="content_container">
 		<div class="main_content_outer d-flex flex-xl-row flex-column align-items-start justify-content-start">
@@ -10,7 +9,7 @@
 						<img [src] = "currentUser.image" class="img-responsive">
 					</div>
 				</div>
-				<div class="general_info_content" *ngIf = "isDataLoaded">
+				<div class="general_info_content" *ngIf="isDataLoaded">
 					<p>{{currentUser.userName}}</p>
 					<p>{{currentUser.email}}</p>
 					<p>{{currentUser.phoneNumber}}</p>
@@ -26,40 +25,101 @@
 
 				<div class="row row-cols-1 row-cols-md-3">
 					<div class="col mb-4">
-					  <div class="card">
-						
-						<div class="card-body">
-						  <h5 class="card-title">Card title</h5>
-						  <p class="card-text">This is a longer card with supporting text below as a natural 
-							  lead-in to additional content. This content is a little bit longer.</p>
-							  <button class="btn btn-danger">Rejected</button>
+						<div class="card">
+
+							<div class="card-body">
+								<h5 class="card-title">Rejected Orders</h5>
+								<table class="table table-hover col-8">
+									<thead>
+										<tr>
+											<th>Product</th>
+											<th>Quantity</th>
+											<th>TotalPrice</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let order of RejectedOrders">
+											<td>
+												<div *ngFor="let orderD of order.orderDetails">{{orderD.product.title}}
+												</div>
+											</td>
+											<td>
+												<div *ngFor="let orderD of order.orderDetails">{{orderD.quantity}}</div>
+											</td>
+											<td>{{order.totalPrice}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
-					  </div>
 					</div>
-				
+
 					<div class="col mb-4">
-					  <div class="card">
-						
-						<div class="card-body">
-						  <h5 class="card-title">Card title</h5>
-						  <p class="card-text">This is a longer card with supporting 
-							  text below as a natural lead-in to additional content.
-							   This content is a little bit longer.</p>
-							   <button class="btn btn-warning">Pending</button>
+						<div class="card">
+
+							<div class="card-body">
+								<h5 class="card-title">Pending Orders</h5>
+								<table class="table table-hover col-8">
+									<thead>
+										<tr>
+											<th>Product</th>
+											<th>Quantity</th>
+											<th>TotalPrice</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let order of PendingOrders">
+											<div *ngIf></div>
+											<td>
+												<div *ngFor="let orderD of order.orderDetails">{{orderD.product.title}}
+												</div>
+											</td>
+											<td>
+												<div *ngFor="let orderD of order.orderDetails">{{orderD.quantity}}</div>
+											</td>
+											<td>{{order.totalPrice}}</td>
+											<td><button class="btn btn-warning"
+													(click)="CancelOrder(order.orderID)">Cancel</button></td>
+										</tr>
+									</tbody>
+								</table>
+								<!-- <button class="btn btn-warning">Pending</button> -->
+							</div>
 						</div>
-					  </div>
 					</div>
 					<div class="col mb-4">
 						<div class="card">
-						  <div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">This is a longer card with supporting text 
-								below as a natural lead-in to additional content.
-								 This content is a little bit longer.</p>
-								 <button class="btn btn-success">Accepted</button>
-						  </div>
+							<div class="card-body">
+								<h5 class="card-title">Accepted Orders</h5>
+								<table class="table table-hover col-8">
+									<thead>
+										<tr>
+											<th>Product</th>
+											<th>Quantity</th>
+											<th>TotalPrice</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let order of AcceptedOrders">
+											<div *ngIf></div>
+											<td>
+												<div *ngFor="let orderD of order.orderDetails">{{orderD.product.title}}
+												</div>
+											</td>
+											<td>
+												<div *ngFor="let orderD of order.orderDetails">{{orderD.quantity}}</div>
+											</td>
+											<td>{{order.totalPrice}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
-					  </div>
+					</div>
+				</div>
+				<div class="row row-cols-1 row-cols-md-3">
+
 				</div>
 
 			</div>

@@ -34,6 +34,8 @@ export class RegistrationComponent implements OnInit {
     gender: new FormControl('', [Validators.required])
   })
 
+  formValid = () => {return this.registrationForm.valid && !this.DuplicateUserName}
+
 
   Submit(RegesteredUser){
     console.log(this.registrationForm.controls.phoneNumber)

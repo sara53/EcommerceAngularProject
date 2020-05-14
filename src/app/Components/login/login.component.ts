@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Routes } from '@angular/router';
+import { Router, Routes, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as $ from 'jquery';
 import { AccountService } from 'src/app/Services/account.service';
@@ -12,7 +12,9 @@ import { AccountService } from 'src/app/Services/account.service';
 })
 export class LoginComponent implements OnInit {
   invalidLogin: boolean;
-  constructor(private accService: AccountService, private router: Router) { }
+  constructor(private accService: AccountService,
+    private route: ActivatedRoute
+    , private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -30,18 +32,26 @@ export class LoginComponent implements OnInit {
       this.accService.login(user)
         .subscribe(result => {
           if (result) {
-            this.router.navigate(['/product']);
+            var isAdmin = this.accService.IsAdmin();
+            let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+            if (isAdmin) {
+              this.router.navigate([returnUrl || '/admin']);
+            }
+            else
+
+              this.router.navigate([returnUrl || '/product']);
           }
-        }, (err) => {
-          console.log("No Error IN login")
-          this.invalidLogin = true;
-        })
+        }
+          , (err) => {
+            console.log("No Error IN login")
+            this.invalidLogin = true;
+          })
     }
   }
 
-  NavToRegisteration(){
+  NavToRegisteration() {
     console.log("d")
-   this.router.navigate(['/Registration']);
+    this.router.navigate(['/Registration']);
   }
 
   // login(user) {
@@ -57,7 +67,7 @@ export class LoginComponent implements OnInit {
   //       this.invalidLogin = true;
   //     })
   // }
-  
+
   show(a) {
     var x = $("#" + a)
     if (x.attr('type') == "password") {

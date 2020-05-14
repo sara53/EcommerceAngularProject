@@ -4,8 +4,10 @@
       <div id="table" class="table-editable">
         <form class="form-inline my-2 my-lg-0">
             <input #ProductName class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (keyup)="filterProduct(ProductName.value)">
-            
+
         </form>
+
+
         <table class="table table-bordered table-responsive-md table-striped text-center">
           <thead>
             <tr>
@@ -44,6 +46,9 @@
          
           </tbody>
         </table>
+
+      <div class="text-center ">  <button class="m-1 btn btn-rounded" id="btnAdd" (click) = "addProduct()">Add product</button>  </div>
+
       </div>
     </div>
   </div>
