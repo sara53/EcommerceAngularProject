@@ -12,7 +12,8 @@ export class UpdateProductComponent implements OnInit {
   price;
   details; 
   CID;
-  _productID
+  _productID;
+  imageSrc;
   constructor(private route:ActivatedRoute,
               private myServices:ProductsService,
               private router:Router) { }
@@ -32,6 +33,19 @@ export class UpdateProductComponent implements OnInit {
    })
    
 
+  }
+  onFileChange(event) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+        // this.myForm.patchValue({
+        //   fileSource: reader.result
+        // });
+      };
+    }
   }
   saveChanges(){
     let product ={
