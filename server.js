@@ -9,4 +9,4 @@ app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname + '/dist/project/index.html'));
 });
 
-app.listen(process.env.PORT || 9999);
+app.listen(process.env.PORT || 8888);
