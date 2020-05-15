@@ -40,21 +40,21 @@ export class ProfileComponent implements OnInit {
   GetPendingOrders() {
     this.orderService.GetPendingOrders().subscribe((response) => {
       this.PendingOrders = response
-      console.log(this.PendingOrders)
+      console.log("pending" + this.PendingOrders)
     }, (error => {
     }))
   }
   GetRejectedOrders() {
     this.orderService.GetRejectedOrders().subscribe((response) => {
       this.RejectedOrders = response
-      console.log(this.RejectedOrders)
+      console.log("rejected" + this.RejectedOrders)
     }, (error => {
     }))
   }
   GetAcceptedOrders() {
     this.orderService.GetAcceptedOrders().subscribe((response) => {
       this.AcceptedOrders = response
-      console.log(this.AcceptedOrders)
+      console.log("accepted" + this.AcceptedOrders)
     }, (error => {
     }))
   }

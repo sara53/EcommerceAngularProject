@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {ProductsService} from 'src/app/Services/products.service';
+import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
   selector: 'app-update-product',
@@ -10,28 +10,29 @@ import {ProductsService} from 'src/app/Services/products.service';
 export class UpdateProductComponent implements OnInit {
   productName;
   price;
-  details; 
+  details;
   CID;
   _productID;
   imageSrc;
-  constructor(private route:ActivatedRoute,
-              private myServices:ProductsService,
-              private router:Router) { }
+  constructor(private route: ActivatedRoute,
+    private myServices: ProductsService,
+    private router: Router) { }
 
   ngOnInit(): void {
-   this._productID = this.route.snapshot.params["id"];
+    this._productID = this.route.snapshot.params["id"];
 
-   this.myServices.getProductById(this._productID).subscribe((Product)=>{
-     console.log(Product);
-     this.CID = Product["categoryID"];
-     this.productName = Product["title"];
-     this.details = Product["details"];
-     this.price = Product["price"];
+    this.myServices.getProductById(this._productID).subscribe((Product) => {
+      console.log(Product);
+      this.CID = Product["categoryID"];
+      this.productName = Product["title"];
+      this.details = Product["details"];
+      this.price = Product["price"];
+      this.imageSrc = Product["image"];
 
-   },(error)=>{
-     console.log(error);
-   })
-   
+    }, (error) => {
+      console.log(error);
+    })
+
 
   }
   onFileChange(event) {
@@ -40,6 +41,7 @@ export class UpdateProductComponent implements OnInit {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
       reader.onload = () => {
+        console.log(this.imageSrc)
         this.imageSrc = reader.result as string;
         // this.myForm.patchValue({
         //   fileSource: reader.result
@@ -47,20 +49,20 @@ export class UpdateProductComponent implements OnInit {
       };
     }
   }
-  saveChanges(){
-    let product ={
-      productID:this._productID,
+  saveChanges() {
+    let product = {
+      productID: this._productID,
       categoryID: this.CID,
-      title:this.productName,
-      price : this.price,
-      details:this.details
-
+      title: this.productName,
+      price: this.price,
+      details: this.details,
+      image: this.imageSrc
     }
     console.log(product);
     console.log(this._productID);
-    this.myServices.updateProduct(this._productID, product).subscribe((response)=>{
+    this.myServices.updateProduct(this._productID, product).subscribe((response) => {
       console.log(response);
-    },(error)=>{
+    }, (error) => {
       console.log(error);
     });
 
