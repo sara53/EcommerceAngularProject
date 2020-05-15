@@ -37,7 +37,7 @@
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <a class="nav-link btn-info logOut" routerLink="" (click)="accService.Logout()" >Logout</a>
+      <a class="nav-link btn-info logOut" routerLink="" *ngIf="accService.isLoggedIn() && !accService.IsAdmin()" (click)="accService.Logout()" >Logout</a>
       <i class="fas fa-shopping-cart" routerLink="shoppingCart"
         *ngIf="accService.isLoggedIn() && !accService.IsAdmin()"></i>
       <a routerLink="shoppingCart" class="badge badge-info"
