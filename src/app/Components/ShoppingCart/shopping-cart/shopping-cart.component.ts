@@ -23,7 +23,7 @@ export class ShoppingCartComponent implements OnInit {
     console.log("lastproduct", this.lastProduct)
     this.orderService.GetShoppingCartItems().subscribe(res => {
       this.Order = res
-      console.log("res" + res.toString())
+      console.log("res" + res)
     }, (err) => {
       console.log(err)
     })
