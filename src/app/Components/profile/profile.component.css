@@ -7,3 +7,6 @@ img{
 .general_info,.main_content{
     padding: 30px;
 }
+table{
+    width: 100%;
+}

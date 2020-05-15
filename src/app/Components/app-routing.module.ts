@@ -19,7 +19,7 @@ import { AuthGuardAdminService } from '../Services/auth-guard-admin.service';
 import { AuthGuardUserService } from '../Services/auth-guard-user.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'product', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'product', component: ProductsComponent, canActivate: [AuthGuardUserService] },
