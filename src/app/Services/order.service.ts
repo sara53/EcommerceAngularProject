@@ -42,6 +42,13 @@ export class OrderService {
     console.log("hello")
     return this.myClient.get(`${this.baseURL}/api/Orders/GetTotalQuantity/` + this.AccService.currentUserID())
   }
+  GetShoppingCartItems() {
+    let token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Bearer ' + token);
+    return this.myClient.get(`${this.baseURL}/api/Orders/GetDetails`,
+      { headers: headers });
+  }
   GetPendingOrders() {
     let token = localStorage.getItem('token');
     let headers = new HttpHeaders();

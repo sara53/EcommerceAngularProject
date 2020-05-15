@@ -3,6 +3,7 @@ import { ShoppingCartService } from '../../../Services/shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ProductsService } from '../../../Services/products.service';
+import { OrderService } from '../../../Services/order.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,7 +13,7 @@ import { ProductsService } from '../../../Services/products.service';
 export class ShoppingCartComponent implements OnInit {
 
   constructor(private cartService: ShoppingCartService,
-    private productService: ProductsService
+    private productService: ProductsService, private orderService: OrderService
     , private router: Router) { }
   Order;
   lastProduct: boolean = false;
@@ -20,9 +21,9 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit(): void {
     console.log("yndhhadlw2ty")
     console.log("lastproduct", this.lastProduct)
-    this.cartService.GetShoppingCartItems().subscribe(res => {
+    this.orderService.GetShoppingCartItems().subscribe(res => {
       this.Order = res
-      //console.log("res" + res)
+      console.log("res" + res.toString())
     }, (err) => {
       console.log(err)
     })
