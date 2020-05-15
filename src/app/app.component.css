@@ -23,3 +23,22 @@ li{
     border-radius: 50%;
 
 }
+
+.logOut
+{
+    margin-right: 14px;
+    border-radius: 36px;
+}
+
+.User,.navbar-brand
+{
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 2px #ccc;
+}
+.navbar-brand{
+    font-size: 25px;
+    font-style: italic;
+    color: #138496;
+}

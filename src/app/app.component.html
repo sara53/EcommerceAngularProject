@@ -30,15 +30,14 @@
       <li class="nav-item" *ngIf="accService.isLoggedIn()&&accService.IsAdmin()">
         <a class="nav-link" routerLink="adminorders">Orders</a>
       </li>
-      <li class=" nav-item" *ngIf="accService.isLoggedIn() && !accService.IsAdmin()">
-        <a class="nav-link" routerLink="profile">Hi, {{accService.currentUser()}}</a>
+      <li class="nav-item User" *ngIf="accService.isLoggedIn() && !accService.IsAdmin()">
+        <a class="nav-link" routerLink="profile">{{accService.currentUser()}}</a>
       </li>
-      <li class="nav-item" *ngIf="accService.isLoggedIn()">
-        <a class="nav-link" routerLink="" (click)="accService.Logout()">Logout</a>
-      </li>
+      
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
+      <a class="nav-link btn-info logOut" routerLink="" (click)="accService.Logout()" >Logout</a>
       <i class="fas fa-shopping-cart" routerLink="shoppingCart"
         *ngIf="accService.isLoggedIn() && !accService.IsAdmin()"></i>
       <a routerLink="shoppingCart" class="badge badge-info"
