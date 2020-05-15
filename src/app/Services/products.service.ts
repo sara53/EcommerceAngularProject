@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProductsService {
 
-  baseURL = "http://localhost:36417";
+  baseURL = "https://htla2yapi.azurewebsites.net";
   constructor(private myClient: HttpClient) { }
 
   cartCount: number = 0;

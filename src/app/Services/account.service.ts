@@ -12,7 +12,7 @@ import { AppError } from '../Commons/app-error';
   providedIn: 'root'
 })
 export class AccountService {
-  baseURL = "http://localhost:36417";
+  baseURL = "https://htla2yapi.azurewebsites.net";
   constructor(private myClient: HttpClient) { }
 
 

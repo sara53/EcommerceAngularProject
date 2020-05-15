@@ -7,7 +7,7 @@ import { AccountService } from './account.service';
 })
 export class OrderService {
 
-  baseURL = "http://localhost:36417";
+  baseURL = "https://htla2yapi.azurewebsites.net";
   orderID;
   constructor(private myClient: HttpClient, private AccService: AccountService) { }
   AddOrder() {

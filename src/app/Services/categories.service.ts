@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -7,10 +7,10 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CategoriesService {
 
-  baseURL = "http://localhost:36417";
-  constructor(private myClient:HttpClient) { }
+  baseURL = "https://htla2yapi.azurewebsites.net";
+  constructor(private myClient: HttpClient) { }
 
-  getAllCategories(){
+  getAllCategories() {
     return this.myClient.get(`${this.baseURL}/api/categories`);
   }
 }

@@ -33,11 +33,12 @@
       <li class="nav-item User" *ngIf="accService.isLoggedIn() && !accService.IsAdmin()">
         <a class="nav-link" routerLink="profile">{{accService.currentUser()}}</a>
       </li>
-      
+
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <a class="nav-link btn-info logOut" routerLink="" *ngIf="accService.isLoggedIn() && !accService.IsAdmin()" (click)="accService.Logout()" >Logout</a>
+      <a class="nav-link btn-info logOut" routerLink="" *ngIf="accService.isLoggedIn()"
+        (click)="accService.Logout()">Logout</a>
       <i class="fas fa-shopping-cart" routerLink="shoppingCart"
         *ngIf="accService.isLoggedIn() && !accService.IsAdmin()"></i>
       <a routerLink="shoppingCart" class="badge badge-info"
